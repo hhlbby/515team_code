@@ -32,9 +32,8 @@ int main() {
                   << "2. Посмотреть маршруты\n"
                   << "3. Просмотр состава экипажа автобуса\n"
                   << "4. Просмотр поездок по автобусу\n"
-                  << "5. Добавить члена экипажа\n"
-                  << "6. Обновить пробег автобуса\n"
-                  << "7. Выйти\n"
+                  << "5. Обновить пробег автобуса\n"
+                  << "6. Выйти\n"
                   << "Выбор: ";
         int choice;
         std::cin >> choice;
@@ -88,33 +87,7 @@ int main() {
             }
             break;
         }
-       case 5: {
-            std::string tax, last, first, category, address;
-            int bus_id, birth_year, experience_years;
-            
-            std::cout << "Налоговый номер: ";
-            std::cin >> tax;
-            std::cout << "Фамилия: ";
-            std::cin >> last;
-            std::cout << "Имя: ";
-            std::cin >> first;
-            std::cout << "Категория: ";
-            std::cin >> category;
-            std::cout << "ID автобуса: ";
-            std::cin >> bus_id;
-            std::cout << "Год рождения: ";
-            std::cin >> birth_year;
-            std::cout << "Опыт работы (лет): ";
-            std::cin >> experience_years;
-            std::cin.ignore(); 
-            std::cout << "Адрес: ";
-            std::getline(std::cin, address);
-            
-            db.addCrewMember(tax, last, first, category, bus_id, birth_year, experience_years, address);
-            std::cout << "Член экипажа добавлен.\n";
-            break;
-        }
-        case 6: {
+        case 5: {
             int bus_id, new_mileage;
             std::cout << "ID автобуса: ";
             std::cin >> bus_id;
@@ -124,7 +97,7 @@ int main() {
             std::cout << "Пробег обновлен.\n";
             break;
         }
-        case 7:
+        case 6:
             running = false;
             break;
         default:

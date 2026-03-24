@@ -138,26 +138,6 @@ std::vector<Trip> Database::getTripsByBus(int bus_id){
     return trips;
 }
 
-void Database::addCrewMember(
-    const std::string& tax_number,
-    const std::string& last_name,
-    const std::string& first_name,
-    const std::string& category,
-    int bus_id,
-    int birth_year,
-    int experience_years,
-    const std::string& address)
-{
-    if (!db) return;
-    std::string sql = "INSERT INTO CREW_MEMBERS(tax_number,last_name,first_name,category,bus_id,birth_year,experience_years,address) VALUES('"
-                      + tax_number + "','" + last_name + "','" + first_name + "','" + category + "',"
-                      + std::to_string(bus_id) + "," + std::to_string(birth_year) + ","
-                      + std::to_string(experience_years) + ",'" + address + "');";
-    char* errMsg = nullptr;
-    if (sqlite3_exec(db, sql.c_str(), nullptr, nullptr, &errMsg) != SQLITE_OK) {
-        if (errMsg) { std::cerr << errMsg << "\n"; sqlite3_free(errMsg); }
-    }
-}
 
 void Database::updateBusMileage(int bus_id,int new_mileage) {
     if(!db) return;

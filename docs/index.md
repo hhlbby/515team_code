@@ -1,9 +1,9 @@
 ---
-title: Название вашего сайта
+title: 515team project
 layout: default
 ---
 
-# created by 515team
+created by 515team
 
 # Глоссарий проекта «Туристическое бюро»
 

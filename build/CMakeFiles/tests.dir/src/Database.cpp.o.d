@@ -2,7 +2,6 @@ CMakeFiles/tests.dir/src/Database.cpp.o: \
  /home/hhlbby/Документы/TPMP/515team_code/src/Database.cpp \
  /usr/include/stdc-predef.h \
  /home/hhlbby/Документы/TPMP/515team_code/includes/Database.h \
- /usr/include/sqlite3.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -60,6 +59,7 @@ CMakeFiles/tests.dir/src/Database.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
@@ -118,7 +118,7 @@ CMakeFiles/tests.dir/src/Database.cpp.o: \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
- /usr/include/c++/13/bits/basic_string.tcc \
+ /usr/include/c++/13/bits/basic_string.tcc /usr/include/sqlite3.h \
  /home/hhlbby/Документы/TPMP/515team_code/includes/User.h \
  /home/hhlbby/Документы/TPMP/515team_code/includes/Bus.h \
  /home/hhlbby/Документы/TPMP/515team_code/includes/CrewMember.h \

@@ -1,5 +1,8 @@
 #include "Trip.h"
 
-Trip::Trip(int _id, int bus, int route, const std::string& dep, const std::string& arr, int passengers, double price)
-    : id(_id), bus_id(bus), route_id(route), departure_date(dep), arrival_date(arr),
-      passengers_count(passengers), ticket_price(price), total_cost(passengers * price) {}
+Trip::Trip(int _id, int _bus_id, int _route_id, const std::string& _departure_date,
+           const std::string& _arrival_date, int _passengers_count,
+           double _ticket_price, double _total_cost)
+    : id(_id), bus_id(_bus_id), route_id(_route_id), departure_date(_departure_date),
+      arrival_date(_arrival_date), passengers_count(_passengers_count),
+      ticket_price(_ticket_price), total_cost(_total_cost) {}

@@ -8,5 +8,6 @@ public:
     std::string model_name;
     int total_mileage;
 
-    Bus(int _id, const std::string& number, const std::string& model, int mileage);
+    Bus() = default;
+    Bus(int _id, const std::string& _bus_number, const std::string& _model_name, int _total_mileage);
 };

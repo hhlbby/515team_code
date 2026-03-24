@@ -1,8 +1,9 @@
 #include "CrewMember.h"
 
-CrewMember::CrewMember(int _id, const std::string& tax, const std::string& ln, const std::string& fn,
-                       const std::string& pat, int birth, const std::string& addr, int exp,
-                       const std::string& cat, int bus, int user)
-    : id(_id), tax_number(tax), last_name(ln), first_name(fn), patronymic(pat),
-      birth_year(birth), address(addr), experience_years(exp), category(cat),
-      bus_id(bus), user_id(user) {}
+CrewMember::CrewMember(int _id, const std::string& _tax_number, const std::string& _last_name,
+                       const std::string& _first_name, const std::string& _patronymic, int _birth_year,
+                       const std::string& _address, int _experience_years, const std::string& _category,
+                       int _bus_id, int _user_id)
+    : id(_id), tax_number(_tax_number), last_name(_last_name), first_name(_first_name),
+      patronymic(_patronymic), birth_year(_birth_year), address(_address),
+      experience_years(_experience_years), category(_category), bus_id(_bus_id), user_id(_user_id) {}

@@ -996,6 +996,7 @@ CMakeFiles/TouristBureau.dir/src/main.cpp.o: /home/hhlbby/Документы/TPM
   /usr/include/c++/13/iosfwd \
   /usr/include/c++/13/iostream \
   /usr/include/c++/13/istream \
+  /usr/include/c++/13/limits \
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
   /usr/include/c++/13/pstl/pstl_config.h \
@@ -1104,6 +1105,8 @@ CMakeFiles/TouristBureau.dir/src/main.cpp.o: /home/hhlbby/Документы/TPM
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
+
+/usr/include/c++/13/limits:
 
 /home/hhlbby/Документы/TPMP/515team_code/src/main.cpp:
 

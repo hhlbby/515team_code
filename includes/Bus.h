@@ -1,19 +1,12 @@
 #pragma once
-#include <sqlite3.h>
 #include <string>
-#include <vector>
-#include "User.h"
-#include "Bus.h"
 
-class Database {
-private:
-    sqlite3* db;
-    bool openDatabase(const std::string& filename);
+class Bus {
 public:
-    Database(const std::string& filename);
-    ~Database();
+    int id;
+    std::string bus_number;
+    std::string model_name;
+    int total_mileage;
 
-    std::vector<User> getAllUsers();
-    std::vector<Bus> getAllBuses();
-    User* authenticateUser(const std::string& username, const std::string& password);
+    Bus(int _id, const std::string& number, const std::string& model, int mileage);
 };

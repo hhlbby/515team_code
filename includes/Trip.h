@@ -12,5 +12,8 @@ public:
     double ticket_price;
     double total_cost;
 
-    Trip(int _id, int bus, int route, const std::string& dep, const std::string& arr, int passengers, double price);
+    Trip() = default;
+    Trip(int _id, int _bus_id, int _route_id, const std::string& _departure_date,
+         const std::string& _arrival_date, int _passengers_count,
+         double _ticket_price, double _total_cost);
 };

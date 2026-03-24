@@ -15,7 +15,9 @@ public:
     int bus_id;
     int user_id;
 
-    CrewMember(int _id, const std::string& tax, const std::string& ln, const std::string& fn,
-               const std::string& pat, int birth, const std::string& addr, int exp,
-               const std::string& cat, int bus, int user);
+    CrewMember() = default;
+    CrewMember(int _id, const std::string& _tax_number, const std::string& _last_name,
+               const std::string& _first_name, const std::string& _patronymic, int _birth_year,
+               const std::string& _address, int _experience_years, const std::string& _category,
+               int _bus_id, int _user_id);
 };

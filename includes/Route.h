@@ -9,5 +9,7 @@ public:
     std::string end_point;
     double distance_km;
 
-    Route(int _id, const std::string& name, const std::string& start, const std::string& end, double dist);
+    Route() = default;
+    Route(int _id, const std::string& _route_name, const std::string& _start_point,
+          const std::string& _end_point, double _distance_km);
 };

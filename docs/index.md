@@ -346,4 +346,5 @@ ROUTES(route_id) <-- TRIPS(route_id)
 ---
 
 [Пройденный курс Паши](https://github.com/pashaGo-13/tpmp_lab4_skills-github-pages)
+
 [Пройденный курс Артема](https://github.com/hhlbby/skills-github-pages)

@@ -22,14 +22,5 @@ public:
     std::vector<CrewMember> getCrewByBus(int bus_id);
     std::vector<Route> getAllRoutes();
     std::vector<Trip> getTripsByBus(int bus_id);
-    void addCrewMember(
-        const std::string& tax_number,
-        const std::string& last_name,
-        const std::string& first_name,
-        const std::string& category,
-        int bus_id,
-        int birth_year,
-        int experience_years,
-        const std::string& address);
-        void updateBusMileage(int bus_id, int new_mileage);
+    void updateBusMileage(int bus_id, int new_mileage);
 };

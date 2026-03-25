@@ -285,9 +285,7 @@ CMakeFiles/TouristBureau.dir/src/CrewMember.cpp.o: /home/hhlbby/Документ
 
 CMakeFiles/TouristBureau.dir/src/Database.cpp.o: /home/hhlbby/Документы/TPMP/515team_code/src/Database.cpp \
   /home/hhlbby/Документы/TPMP/515team_code/includes/Bus.h \
-  /home/hhlbby/Документы/TPMP/515team_code/includes/CrewMember.h \
   /home/hhlbby/Документы/TPMP/515team_code/includes/Database.h \
-  /home/hhlbby/Документы/TPMP/515team_code/includes/Route.h \
   /home/hhlbby/Документы/TPMP/515team_code/includes/Trip.h \
   /home/hhlbby/Документы/TPMP/515team_code/includes/User.h \
   /usr/include/alloca.h \
@@ -996,7 +994,6 @@ CMakeFiles/TouristBureau.dir/src/main.cpp.o: /home/hhlbby/Документы/TPM
   /usr/include/c++/13/iosfwd \
   /usr/include/c++/13/iostream \
   /usr/include/c++/13/istream \
-  /usr/include/c++/13/limits \
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
   /usr/include/c++/13/pstl/pstl_config.h \
@@ -1106,11 +1103,11 @@ CMakeFiles/TouristBureau.dir/src/main.cpp.o: /home/hhlbby/Документы/TPM
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 
-/usr/include/c++/13/limits:
-
 /home/hhlbby/Документы/TPMP/515team_code/src/main.cpp:
 
 /home/hhlbby/Документы/TPMP/515team_code/src/User.cpp:
+
+/home/hhlbby/Документы/TPMP/515team_code/includes/Route.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h:
 
@@ -1183,8 +1180,6 @@ CMakeFiles/TouristBureau.dir/src/main.cpp.o: /home/hhlbby/Документы/TPM
 /usr/include/c++/13/bits/exception_ptr.h:
 
 /home/hhlbby/Документы/TPMP/515team_code/includes/Trip.h:
-
-/home/hhlbby/Документы/TPMP/515team_code/includes/Route.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 

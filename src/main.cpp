@@ -1,113 +1,191 @@
 #include <iostream>
-#include <limits>
+#include <tuple>
 #include "Database.h"
-
-void clearInput() {
-    std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-}
 
 int main() {
     Database db("../db/tourist_bureau.db");
-    std::cout << "База данных открыта\n";
 
     std::string login, password;
+
     std::cout << "Логин: ";
     std::cin >> login;
+
     std::cout << "Пароль: ";
     std::cin >> password;
 
     User* user = db.authenticateUser(login, password);
+
     if (!user) {
-        std::cout << "Неверный логин/пароль\n";
+        std::cout << "Ошибка авторизации\n";
         return 1;
     }
 
     std::cout << "Привет, " << user->full_name << " (" << user->role << ")\n";
 
-    bool running = true;
-    while (running) {
-        std::cout << "\nМеню:\n"
-                  << "1. Посмотреть все автобусы\n"
-                  << "2. Посмотреть маршруты\n"
-                  << "3. Просмотр состава экипажа автобуса\n"
-                  << "4. Просмотр поездок по автобусу\n"
-                  << "5. Обновить пробег автобуса\n"
-                  << "6. Выйти\n"
-                  << "Выбор: ";
-        int choice;
+    int choice;
+
+    while (true) {
+        std::cout << "\nМеню:\n";
+        std::cout << "1. Рейсы автобуса за период\n";
+        std::cout << "2. Статистика автобуса\n";
+        std::cout << "3. Деньги экипажей за период\n";
+        std::cout << "4. Самый дорогой маршрут\n";
+        std::cout << "5. Лучший автобус\n";
+        std::cout << "6. Деньги экипажа на дату\n";
+        std::cout << "7. Добавить члена экипажа\n";
+        std::cout << "8. Обновить пробег автобуса\n";
+        std::cout << "9. Удалить члена экипажа\n";
+        std::cout << "0. Выход\n";
+        std::cout << "Выбор: ";
+
         std::cin >> choice;
 
-        switch (choice) {
-        case 1: {
-            auto buses = db.getAllBuses();
-            for (auto& bus : buses)
-                std::cout << bus.id << " | " << bus.bus_number << " | " << bus.model_name
-                          << " | Пробег: " << bus.total_mileage << "\n";
-            break;
-        }
-        case 2: {
-            auto routes = db.getAllRoutes();
-            for (auto& r : routes)
-                std::cout << r.id << " | " << r.route_name << " | "
-                          << r.start_point << " -> " << r.end_point
-                          << " | Дистанция: " << r.distance_km << " км\n";
-            break;
-        }
-        case 3: {
-            int bus_id;
-            std::cout << "Введите ID автобуса: ";
-            std::cin >> bus_id;
-            auto crew = db.getCrewByBus(bus_id);
-            if (crew.empty()) {
-                std::cout << "Экипаж не найден\n";
-            } else {
-                for (auto& c : crew)
-                    std::cout << c.id << " | " << c.last_name << " " << c.first_name
-                              << " | Категория: " << c.category
-                              << " | Опыт: " << c.experience_years << " лет\n";
+        if (choice == 1) {
+            int id;
+            std::string from, to;
+
+            std::cout << "ID автобуса: ";
+            std::cin >> id;
+            std::cout << "Дата от: ";
+            std::cin >> from;
+            std::cout << "Дата до: ";
+            std::cin >> to;
+
+            auto trips = db.tripsByBusPeriod(id, from, to);
+
+            for (auto& t : trips) {
+                std::cout << "ID: " << t.id
+                          << " Пассажиры: " << t.passengers_count
+                          << " Цена: " << t.ticket_price
+                          << " Общая сумма: " << t.total_cost
+                          << "\n";
             }
-            break;
         }
-        case 4: {
-            int bus_id;
-            std::cout << "Введите ID автобуса: ";
-            std::cin >> bus_id;
-            auto trips = db.getTripsByBus(bus_id);
-            if (trips.empty()) {
-                std::cout << "Поездки не найдены\n";
-            } else {
-                for (auto& t : trips)
-                    std::cout << t.id << " | Маршрут: " << t.route_id
-                              << " | От: " << t.departure_date
-                              << " До: " << t.arrival_date
-                              << " | Пассажиры: " << t.passengers_count
-                              << " | Цена билета: " << t.ticket_price
-                              << " | Общая стоимость: " << t.total_cost << "\n";
+
+        else if (choice == 2) {
+            int id;
+            std::cout << "ID автобуса: ";
+            std::cin >> id;
+
+            auto stats = db.statsByBus(id);
+
+            std::cout << "Поездки: " << std::get<0>(stats)
+                      << " Пассажиры: " << std::get<1>(stats)
+                      << " Деньги: " << std::get<2>(stats)
+                      << "\n";
+        }
+
+        else if (choice == 3) {
+            std::string from, to;
+            double percent;
+
+            std::cout << "Дата от: ";
+            std::cin >> from;
+            std::cout << "Дата до: ";
+            std::cin >> to;
+            std::cout << "Процент: ";
+            std::cin >> percent;
+
+            auto res = db.crewMoneyPeriod(from, to, percent);
+
+            for (auto& x : res) {
+                std::cout << "Экипаж ID: " << x.first
+                          << " Деньги: " << x.second << "\n";
             }
-            break;
         }
-        case 5: {
-            int bus_id, new_mileage;
+
+        else if (choice == 4) {
+            auto res = db.mostExpensiveRoute();
+
+            for (auto& x : res) {
+                std::cout << "Автобус: " << std::get<0>(x)
+                          << " Экипаж: " << std::get<1>(x)
+                          << " Цена билета: " << std::get<2>(x)
+                          << "\n";
+            }
+        }
+
+        else if (choice == 5) {
+            auto res = db.topBusStats();
+
+            std::cout << "Автобус: " << std::get<0>(res)
+                      << " Пассажиры: " << std::get<1>(res)
+                      << " Пробег: " << std::get<2>(res)
+                      << "\n";
+        }
+
+        else if (choice == 6) {
+            int id;
+            std::string date;
+            double percent;
+
+            std::cout << "ID экипажа: ";
+            std::cin >> id;
+            std::cout << "Дата: ";
+            std::cin >> date;
+            std::cout << "Процент: ";
+            std::cin >> percent;
+
+            double money = db.crewMoneyOnDate(id, date, percent);
+
+            std::cout << "Начислено: " << money << "\n";
+        }
+
+        else if (choice == 7) {
+            std::string tax, last, first, category, address;
+            int bus_id, birth_year, exp;
+
+            std::cout << "Налоговый номер: ";
+            std::cin >> tax;
+            std::cout << "Фамилия: ";
+            std::cin >> last;
+            std::cout << "Имя: ";
+            std::cin >> first;
+            std::cout << "Категория: ";
+            std::cin >> category;
             std::cout << "ID автобуса: ";
             std::cin >> bus_id;
+            std::cout << "Год рождения: ";
+            std::cin >> birth_year;
+            std::cout << "Опыт: ";
+            std::cin >> exp;
+            std::cout << "Адрес: ";
+            std::cin.ignore();
+            std::getline(std::cin, address);
+
+            db.addCrewMember(tax, last, first, category, bus_id, birth_year, exp, address);
+
+            std::cout << "Добавлено\n";
+        }
+
+        else if (choice == 8) {
+            int id, mileage;
+
+            std::cout << "ID автобуса: ";
+            std::cin >> id;
             std::cout << "Новый пробег: ";
-            std::cin >> new_mileage;
-            db.updateBusMileage(bus_id, new_mileage);
-            std::cout << "Пробег обновлен.\n";
+            std::cin >> mileage;
+
+            db.updateBusMileage(id, mileage);
+
+            std::cout << "Обновлено\n";
+        }
+
+        else if (choice == 9) {
+            int id;
+            std::cout << "ID члена экипажа: ";
+            std::cin >> id;
+
+            db.deleteCrewMember(id);
+
+            std::cout << "Удалено\n";
+        }
+
+        else if (choice == 0) {
             break;
         }
-        case 6:
-            running = false;
-            break;
-        default:
-            std::cout << "Неверный выбор\n";
-            break;
-        }
-        clearInput();
     }
 
     delete user;
-    std::cout << "Выход...\n";
     return 0;
 }
